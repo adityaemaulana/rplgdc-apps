@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "898125843539",
+    "firebase_url": "https://rplgdc-apps.firebaseio.com",
+    "project_id": "rplgdc-apps",
+    "storage_bucket": "rplgdc-apps.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:898125843539:android:4a28a3f5355c97aa7f0aa6",
+        "android_client_info": {
+          "package_name": "com.example.rplgdc"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "898125843539-8hoog8c5pgm6s7l770qp2luaq4ld0adg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.rplgdc",
+            "certificate_hash": "c460f649f3783e1ec750439a661136af49de45bb"
+          }
+        },
+        {
+          "client_id": "898125843539-9i653a50g5491gguns2lt5hli6haikd2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC2e_VuTmG0FtASh_RlmgryhS-nHVNDmT4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "898125843539-9i653a50g5491gguns2lt5hli6haikd2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
