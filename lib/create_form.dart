@@ -9,6 +9,7 @@ class CreateArtikel extends StatefulWidget {
 }
 
 class _CreateArtikelState extends State<CreateArtikel> {
+
   TextEditingController controller = TextEditingController();
   TextEditingController headerController = TextEditingController();
   FocusNode _focusNode = FocusNode();
@@ -18,9 +19,12 @@ class _CreateArtikelState extends State<CreateArtikel> {
 
   @override
   Widget build(BuildContext context) {
+    
+    //get devices data
     final width = MediaQuery.of(context).size.width;
     final heigh = MediaQuery.of(context).size.height;
 
+    //toolbar widget
     Widget _toolbar = Container(
       height: heigh * 7 / 100,
       width: double.infinity,
@@ -86,6 +90,7 @@ class _CreateArtikelState extends State<CreateArtikel> {
       },
     );
 
+    //for header form
     final headerForm = TextFormField(
       autofocus: true,
       controller: headerController,
@@ -103,6 +108,7 @@ class _CreateArtikelState extends State<CreateArtikel> {
       },
     );
 
+    //for body form
     final bodyForm = TextFormField(
       focusNode: _focusNode,
       controller: controller,
@@ -113,11 +119,12 @@ class _CreateArtikelState extends State<CreateArtikel> {
           contentPadding: EdgeInsets.only(left: 10.0, top: 20.0, bottom: 20.0)),
     );
 
+    //main
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SafeArea(
+      home: SafeArea(     //save area for avoiding nofitication bar
         child: Scaffold(
-            appBar: AppBar(
+            appBar: AppBar(   //make app bar
               leading: IconButton(
                 icon: Icon(
                   Icons.close,
@@ -130,6 +137,7 @@ class _CreateArtikelState extends State<CreateArtikel> {
               title: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: <Widget>[
+                  //make post button in app bar
                   FlatButton(
                     child: Text(
                       "Post",
@@ -141,25 +149,27 @@ class _CreateArtikelState extends State<CreateArtikel> {
               ),
             ),
             resizeToAvoidBottomPadding: false,
-            body: Stack(
+            body: Stack(    //make stack layout
               children: <Widget>[
                 Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: ListView(
                       children: <Widget>[
+                        //check image is exist
                         _image == null
                             ? Align(
                                 alignment: Alignment.centerLeft,
                                 child: imageForm,
                               )
                             : Text(_url),
-                        headerForm,
-                        bodyForm
+                        headerForm, //header form
+                        bodyForm  //body from
                       ],
                     )),
+                //set the toolbar widget on front stack layer
                 Align(
                   child: _toolbar,
-                  alignment: FractionalOffset.bottomCenter,
+                  alignment: FractionalOffset.bottomCenter, //set aligmen on bottom center
                 )
               ],
             )),
