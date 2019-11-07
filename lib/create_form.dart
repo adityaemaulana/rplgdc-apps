@@ -1,8 +1,7 @@
 import 'dart:io';
-
+import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:zefyr/zefyr.dart';
+import 'package:rplgdc/functions.dart';
 
 class CreateArtikel extends StatefulWidget {
   @override
@@ -14,16 +13,8 @@ class _CreateArtikelState extends State<CreateArtikel> {
   TextEditingController headerController = TextEditingController();
   FocusNode _focusNode = FocusNode();
   FocusNode _headerNode = FocusNode();
-
   File _image;
-
-  Future getImage() async {
-    var image = await ImagePicker.pickImage(source: ImageSource.camera);
-
-    setState(() {
-      _image = image;
-    });
-  }
+  String _url;
 
   @override
   Widget build(BuildContext context) {
@@ -83,7 +74,16 @@ class _CreateArtikelState extends State<CreateArtikel> {
 
     final imageForm = IconButton(
       icon: Icon(Icons.add_a_photo),
-      onPressed: () {},
+      onPressed: (){
+        try {
+          setState(() async {
+            _image = await ImageFunction().getImage();
+            _url = FirebaseFunction().uploadToStorage(_image);
+          });
+        } catch (e) {
+          print(e);
+        }
+      },
     );
 
     final headerForm = TextFormField(
@@ -147,10 +147,12 @@ class _CreateArtikelState extends State<CreateArtikel> {
                     padding: const EdgeInsets.all(8.0),
                     child: ListView(
                       children: <Widget>[
-                        Align(
-                          alignment: Alignment.centerLeft,
-                          child: imageForm,
-                        ),
+                        _image == null
+                            ? Align(
+                                alignment: Alignment.centerLeft,
+                                child: imageForm,
+                              )
+                            : Text(_url),
                         headerForm,
                         bodyForm
                       ],

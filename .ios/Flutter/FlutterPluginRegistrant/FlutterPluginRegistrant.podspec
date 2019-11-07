@@ -18,8 +18,8 @@ Depends on all your plugins, and provides a function to register them.
   s.public_header_files = './Classes/**/*.h'
   s.dependency 'Flutter'
   s.dependency 'cloud_firestore'
+  s.dependency 'file_picker'
   s.dependency 'firebase_core'
   s.dependency 'firebase_storage'
   s.dependency 'image_picker'
-  s.dependency 'url_launcher'
 end
